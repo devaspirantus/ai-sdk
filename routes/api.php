@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Chapter1\SetupController;
 use App\Http\Controllers\Api\Chapter2\AgentPromptingController;
 use App\Http\Controllers\Api\Chapter2\ConversationalAgentController;
+use App\Http\Controllers\Api\Chapter2\StructureOutputController;
+
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
@@ -26,4 +28,6 @@ Route::prefix('/chapter2')->middleware('auth:sanctum')->group(function(){
     Route::post('/prompt',[AgentPromptingController::class,'promptWtihInput']);
     Route::post('/conversation/start',[ConversationalAgentController::class,'startConversation']);
     Route::post('/conversation/continue',[ConversationalAgentController::class,'continueConversation']);
-});
+
+    Route::post('/structured/sentiment',[StructureOutputController::class,'analyzeSentiment']);
+    });
